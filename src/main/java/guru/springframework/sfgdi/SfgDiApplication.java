@@ -4,6 +4,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import guru.springframework.sfgdi.controllers.ConstructorInjectedController;
+import guru.springframework.sfgdi.controllers.I18nController;
 import guru.springframework.sfgdi.controllers.MyController;
 import guru.springframework.sfgdi.controllers.PropertyInjectedController;
 import guru.springframework.sfgdi.controllers.SetterInjectedController;
@@ -13,11 +14,22 @@ public class SfgDiApplication {
 
 	public static void main(String[] args) {
 		var ctx = SpringApplication.run(SfgDiApplication.class, args);
+
+
 		
-		var myController = (MyController) ctx.getBean("myController");
+		System.out.println();
+		System.out.println("############ I18n");
+		
+		var i18nController = (I18nController)ctx.getBean("i18nController");
+		
+		System.out.println(i18nController.sayHello());
+		
 		
 		System.out.println();
 		System.out.println("############ Primary bean");
+		
+		var myController = (MyController) ctx.getBean("myController");
+		
 		System.out.println(myController.sayHello());
 		
 		
